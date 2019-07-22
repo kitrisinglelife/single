@@ -60,9 +60,10 @@ public class ApiConnection {
 				result += buffer;
 			}
 		}finally {
-			in.close();
+			if(in != null) {
+				in.close();	
+			}
 		}
-		
 		return result;
 	}
 	
