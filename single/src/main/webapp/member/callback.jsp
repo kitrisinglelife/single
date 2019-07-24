@@ -9,8 +9,8 @@
 <!-- 네아로 설정값-->
 <c:set var = "clientId" value = "3FGMY2V_UXaBQxS0sx0g"/>
 <!-- 로컬용 -->
-<c:set var = "serviceUrl" value = "http://192.168.14.40:8443/single"/>
-<c:set var = "callbackUrl" value = "https://192.168.14.40:8443/single/member/callback.jsp"/>
+<c:set var = "serviceUrl" value = "http://localhost/single"/>
+<c:set var = "callbackUrl" value = "http://localhost/single/member/callback.jsp"/>
 
 <!-- 네아로 자바스크립트-->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
@@ -80,6 +80,8 @@
 			dataType : "json", //서버에서 반환되는 형식
 			success :function(data){
 				console.log(data);
+				
+				
 				if(data.msg =='outmember'){
 // 					console.log('탈퇴한 회원');
 // 					window.location = document.referrer + '?msg=outmember';
@@ -119,6 +121,10 @@
 					//회원가입폼으로 값 전달.
 				}else if (data.msg =='refresh'){
 // 					console.log('자동 로그인');
+					var userInfo = data.userInfo;
+					console.log(data.userInfo);
+					console.log(document.referrer);
+					sessionStorage.setItem("userInfo",data.userInfo);
 					history.back();
 				}		
 			},beforeSend: function () {

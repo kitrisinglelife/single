@@ -212,7 +212,9 @@
 	    board_createdate as boardCreatedate,
 	    board_like as boardLike
 	from single_board
-	where user_id = #{userId}		
+	where 1=1
+	and board_statecode = '1'
+	and user_id = #{userId}		
 	</select>
 	
 	
@@ -226,7 +228,8 @@
 	    b.user_id as userId,
 	    b.board_like as boardLike
 	from single_board b, single_reply r
-	where b.board_num = r.board_num
+	where b.board_statecode = '1'
+	and b.board_num = r.board_num
 	and r.user_id =  #{userId}	
 	</select>
 
@@ -239,7 +242,8 @@
 	    b.user_id as userId,
 	    b.board_like as boardLike
 	from single_board b, single_like l 
-	where b.board_num = l.board_num
+	where b.board_statecode = '1'
+	and b.board_num = l.board_num
 	and l.user_id = #{userId}	
 	</select>
 

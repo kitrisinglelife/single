@@ -19,7 +19,10 @@ public interface GroupService {
 	public String groupModify(GroupDto groupDto, String groupHashtag);
 	public String createGroup(GroupDto groupDto, UserDto userInfo, String groupHashtag);
 	public String groupDelete(int groupNum);
-
+	
+	//추천관련
+	public List<GroupDto> getRecommendGroupList(Map<String, Object> parameter);
+	
 	//그룹멤버 관련
 	public GroupMemberDto getGroupMember(Map<String, Object> parameter);
 	public List<GroupMemberDto> getGroupMemberList(int groupNum);

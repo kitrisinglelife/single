@@ -69,7 +69,7 @@ public class MemberServiceImpl implements MemberService {
 		sendMail.setSubject("[우리 혼자 살아요] 회원가입 이메일 인증");
 		sendMail.setText(new StringBuffer().append("<h1>[이메일 인증]</h1>")
 				.append("<p>아래 링크를 클릭하시면 이메일 인증이 완료됩니다.</p>")
-				.append("<a href='https://192.168.14.40:8443/single/member/authconfirm?email=")
+				.append("<a href='http://localhost/single/member/authconfirm?email=")
 				.append(userDto.getUserId())
 				.append("&authKey=")
 				.append(authkey)

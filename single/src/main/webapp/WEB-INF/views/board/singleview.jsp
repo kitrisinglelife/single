@@ -127,7 +127,7 @@ $(function() {
 	
 	// 글 삭제
 	$(document).on("click","#boardDelete",function (){
-		alert("버튼클릭");
+		//alert("버튼클릭");
 		$.ajax({
 			url : '${root}/board/boardDelete?boardNum=' + boardNum,
 			dataType : "json",

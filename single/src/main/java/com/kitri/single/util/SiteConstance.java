@@ -15,7 +15,7 @@ public class SiteConstance {
 
 	public static final String USER_DEFAULT_IMG_PATH = "/resources/img/user/";
 
-	public static final String CHAT_SERVER_IP = "wss://192.168.14.40:8443";
+	public static final String CHAT_SERVER_IP = "ws://localhost:80";
 	
 	//모임과제에서 한번에 불러오는 과제의 개수
 	public static final int GROUP_HOMEWORK_SIZE = 4;

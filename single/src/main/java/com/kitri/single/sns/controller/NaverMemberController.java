@@ -46,7 +46,17 @@ public class NaverMemberController {
 	//네아로 로그인 눌렀을시 webapp/member/callback.jsp를 통해 호출되는 메소드
 	@RequestMapping(value = "/callback", method = RequestMethod.POST)
 	@ResponseBody
-	public String callback(@RequestParam Map<String, String> parameter, Model model, HttpServletRequest request) {
+	public String callback(@RequestParam Map<String, String> parameter, Model model, HttpServletRequest request,
+			HttpServletResponse response) {
+		
+		//로그인 하기전 jsp페이지에서 캐시제거
+		if(request.getProtocol().equals("HTTP/1.0")){
+			response.setHeader("Pragma","no-cache");
+			response.setDateHeader("Expires",0);
+		} else if(request.getProtocol().equals("HTTP/1.1")){
+			response.setHeader("Cache-Control","no-cache");
+		}
+		
 		// TODO sns에 따라 회원가입할지 기존아이디와 연동할지 테스트 필요
 		// 소셜 로그인 아이디 수신
 		// 첫 로그인
@@ -90,9 +100,10 @@ public class NaverMemberController {
 		
 		logger.debug("callback>>>userDto: "+userDto);
 		logger.debug("callback>>>oldSnsDto: "+oldSnsDto);
+		
 		if(userDto != null  && userDto.getUserStatecode().equals("0")) {
 			//탈퇴한회원입니다.
-			jsonObject.put("msg", "outmember");
+			jsonObject.put("msg", "outmember");			
 			return jsonObject.toString();
 		}
 		else if(userDto!= null && oldSnsDto == null) {
@@ -114,6 +125,7 @@ public class NaverMemberController {
 			WebUtils.setSessionAttribute(request, "userInfo", userDto); //리다이렉트시 세션은 이렇게 담아준다.
 //			return "redirect:/index.jsp";
 			jsonObject.put("msg", "refresh");
+			jsonObject.put("userInfo", userDto);
 			return jsonObject.toString();
 		}
 		else if(userDto != null && oldSnsDto != null) {
@@ -127,6 +139,8 @@ public class NaverMemberController {
 			WebUtils.setSessionAttribute(request, "userInfo", userDto ); //리다이렉트시 세션은 이렇게 담아준다.
 //			return "redirect:/index.jsp";
 			jsonObject.put("msg", "refresh");
+			jsonObject.put("userInfo", userDto);
+
 			return jsonObject.toString();
 		}
 		else if (userDto== null && oldSnsDto == null) {

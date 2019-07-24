@@ -1,0 +1,1247 @@
+-- 그룹 테스트 코드
+-- 그룹 seq
+drop sequence group_num_seq;
+drop sequence group_category_num_seq;
+drop sequence calendar_num_seq;
+drop sequence homework_num_seq;
+drop sequence group_hprogress_num_seq;
+drop sequence hashtag_type_num_seq;
+drop sequence hashtag_num_seq;
+-- 시퀀스 삭제
+drop sequence category_num_seq;
+drop sequence board_type_num_seq;
+drop sequence board_list_num_seq;
+drop sequence board_num_seq;
+drop sequence reply_num_seq;
+
+create sequence group_num_seq
+start with 0
+increment by 1
+minvalue 0
+;
+-- 그룹 카테고리 seq
+
+create sequence group_category_num_seq
+start with 0
+increment by 1
+minvalue 0
+;
+
+-- 그룹 일정 seq
+
+create sequence calendar_num_seq
+start with 0
+increment by 1
+minvalue 0
+;
+
+-- 그룹 숙제 seq
+
+create sequence homework_num_seq
+start with 0
+increment by 1
+minvalue 0
+;
+
+-- 그룹 숙제 진행상황 seq
+
+create sequence group_hprogress_num_seq
+start with 0
+increment by 1
+minvalue 0
+;
+
+--해시태그 타입 seq
+
+create sequence hashtag_type_num_seq
+start with 0
+increment by 1
+minvalue 0
+;
+
+--해시태그 seq
+
+create sequence hashtag_num_seq
+start with 0
+increment by 1
+minvalue 0
+;
+
+
+
+
+-- 게시판 카테고리
+create sequence category_num_seq increment by 1 start with 0 minvalue 0;
+-- 게시판 형식
+create sequence board_type_num_seq increment by 1 start with 0 minvalue 0;
+-- 게시판 리스트
+create sequence board_list_num_seq increment by 1 start with 0 minvalue 0;
+-- 게시판
+create sequence board_num_seq increment by 1 start with 1 minvalue 0;
+-- 댓글
+create sequence reply_num_seq increment by 1 start with 1 minvalue 0;
+
+-- 해시태그 타입 insert
+insert into single_hashtag_type
+values(
+    hashtag_type_num_seq.nextval
+    , '게시판'
+);
+insert into single_hashtag_type
+values(
+    hashtag_type_num_seq.nextval
+    , '모임'
+);
+
+
+-- 카테고리 insert
+insert into single_group_category
+values(
+    group_category_num_seq.nextval
+    , '스터디'
+);
+
+insert into single_group_category
+values(
+    group_category_num_seq.nextval
+    , '취미'
+);
+
+insert into single_group_category
+values(
+    group_category_num_seq.nextval
+    , '친목도모'
+);
+
+insert into single_group_category
+values(
+    group_category_num_seq.nextval
+    , '맛집탐방'
+);
+
+-- 게시판 카테고리
+insert into single_board_category(category_num,category_name) VALUES(category_num_seq.nextval,'혼자놀아요');
+insert into single_board_category(category_num,category_name) VALUES(category_num_seq.nextval,'같이놀아요');
+
+
+-- 게시판 형식 - 우리는 다 같음.
+insert into single_board_type(board_type_num,board_type_name) VALUES(board_type_num_seq.nextval,'기본게시판');
+-- 게시판 리스트 (자취생활팁, 요리레시피, 명예의전당)
+-- 자취
+insert into single_board_list(board_list_num,board_name,board_type_num,board_category_num) 
+VALUES(board_list_num_seq.nextval,'자취생활팁',1,1);
+-- 요리
+insert into single_board_list(board_list_num,board_name,board_type_num,board_category_num) 
+VALUES(board_list_num_seq.nextval,'요리레시피',1,1);
+-- 명예
+insert into single_board_list(board_list_num,board_name,board_type_num,board_category_num) 
+VALUES(board_list_num_seq.nextval,'명예의전당',1,1);
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+insert into single_user values
+('qjawns0617@naver.com','123123','뿡뿡뿡뿡','권범준',null,'1994-06-18','M','010-5419-0583','77777','경기도 화성시','반송동 떙땡아파트',sysdate,null,'1',null, null);
+
+-- 테스트용 아이디 생성
+insert into single_user
+(user_id, user_password, user_nickname, user_name, user_birthday, user_gender, user_phone, user_joindate, user_statecode)
+values (
+    'calubang@naver.com'
+    , '123'
+    , '카루뱅'
+    , '안병욱'
+    , to_date('19880121' , 'yyyymmdd')
+    , 'M'
+    , '01071633863'
+    , SYSDATE
+    , '1'
+)
+;
+insert into single_user
+(user_id, user_password, user_nickname, user_name, user_birthday, user_gender, user_phone, user_joindate, user_statecode)
+values (
+    'calubang1@naver.com'
+    , '123'
+    , '카루뱅1'
+    , '안병욱1'
+    , to_date('19880121' , 'yyyymmdd')
+    , 'M'
+    , '01071633863'
+    , SYSDATE
+    , '1'
+)
+;
+insert into single_user
+(user_id, user_password, user_nickname, user_name, user_birthday, user_gender, user_phone, user_joindate, user_statecode)
+values (
+    'calubang2@naver.com'
+    , '123'
+    , '카루뱅2'
+    , '안병욱2'
+    , to_date('19880121' , 'yyyymmdd')
+    , 'M'
+    , '01071633863'
+    , SYSDATE
+    , '1'
+)
+;
+insert into single_user
+(user_id, user_password, user_nickname, user_name, user_birthday, user_gender, user_phone, user_joindate, user_statecode)
+values (
+    'calubang3@naver.com'
+    , '123'
+    , '카루뱅3'
+    , '안병욱3'
+    , to_date('19880121' , 'yyyymmdd')
+    , 'M'
+    , '01071633863'
+    , SYSDATE
+    , '1'
+)
+;
+
+insert into single_group
+(group_num, group_category_num, group_name, group_description, group_img_src, group_member_count, group_member_limit, group_main_place, group_createdate, group_statecode)
+values(
+    group_num_seq.nextval
+    , 1
+    , '하루에 한번 영어단어 부시는 모임'
+    , '영어단어를 하루에 하나씩 부십니다. 하루에 하나 못외우면 혼납니다.'
+    , 'https://cdn.studysearch.co.kr/images/leader/1147/6034-1508821271.png?v=1508821271'
+    , 3
+    , 10
+    , '경기도 광명시'
+    , sysdate
+    , '1'
+);
+insert into single_group
+(group_num, group_category_num, group_name, group_description, group_img_src, group_member_count, group_member_limit, group_main_place, group_createdate, group_statecode)
+values(
+    group_num_seq.nextval
+    , 2
+    , '취미로 과자만들기 모임'
+    , '취미로 과자를 만들고, 레시피를 공유하는 모임입니다. 한달에 한번 정기모임이 있어요^^'
+    , 'https://cdn.studysearch.co.kr/images/leader/1939/8739-1528697685.png?v=1528697686'
+    , 3
+    , 5
+    , '서울 구로구 깔깔거리'
+    , sysdate
+    , '1'
+);
+insert into single_group
+(group_num, group_category_num, group_name, group_description, group_img_src, group_member_count, group_member_limit, group_main_place, group_createdate, group_statecode)
+values(
+    group_num_seq.nextval
+    , 3
+    , '깔깔거리에 혼자사는 자취러 모임'
+    , '구디역 깔깔거리에서 혼자사는 자취러 모임!!!!! 혼밥은 지겹다. 같이 밥먹고 같이 운동하고, 같이 공부하고 자취정보 공유하실 분들 들어오세요~'
+    , 'https://cdn.studysearch.co.kr/images/leader/2276/9882-1535699965.png?v=1535699965'
+    , 3
+    , 15
+    , '서울시 구로구 깔깔거리'
+    , sysdate
+    , '1'
+);
+insert into single_group
+(group_num, group_category_num, group_name, group_description, group_img_src, group_member_count, group_member_limit, group_main_place, group_createdate, group_statecode)
+values(
+    group_num_seq.nextval
+    , 4
+    , '떡볶이는 떡튀순'
+    , '서울의 떡볶이 맛집을 찾아다니는 모임입니다. 떡볶이 튀김 순대 조합 좋아하시는 분들 들어오세요.'
+    , 'https://img.siksinhot.com/place/1489529724877216.jpg?c=Y'
+    , 3
+    , 20
+    , '서울시'
+    , sysdate
+    , '1'
+);
+
+
+commit;
+
+insert into single_group_member
+values(
+    1
+    , 'calubang@naver.com'
+    , 'L'  --그룹장
+    , sysdate
+    , null
+);
+
+insert into single_group_member
+values(
+    1
+    , 'calubang1@naver.com'
+    , 'M'  --그룹원
+    , sysdate
+    , sysdate
+);
+
+insert into single_group_member
+values(
+    1
+    , 'calubang2@naver.com'
+    , 'M'  -- 그룹원
+    , sysdate
+    , sysdate
+);
+
+
+insert into single_group_member
+values(
+    2
+    , 'calubang1@naver.com'
+    , 'L'  --그룹장
+    , sysdate
+    , sysdate
+);
+
+insert into single_group_member
+values(
+    2
+    , 'calubang2@naver.com'
+    , 'M'  --그룹원
+    , sysdate
+    , sysdate
+);
+
+insert into single_group_member
+values(
+    2
+    , 'calubang3@naver.com'
+    , 'M'  -- 그룹원
+    , sysdate
+    , sysdate
+);
+
+insert into single_group_member
+values(
+    3
+    , 'calubang2@naver.com'
+    , 'L'  --그룹장
+    , sysdate
+    , sysdate
+);
+
+insert into single_group_member
+values(
+    3
+    , 'calubang3@naver.com'
+    , 'M'  --그룹원
+    , sysdate
+    , sysdate
+);
+
+insert into single_group_member
+values(
+    3
+    , 'calubang1@naver.com'
+    , 'M'  -- 그룹원
+    , sysdate
+    , sysdate
+);
+
+insert into single_group_member
+values(
+    4
+    , 'calubang3@naver.com'
+    , 'L'  --그룹장
+    , sysdate
+    , sysdate
+);
+
+insert into single_group_member
+values(
+    4
+    , 'calubang1@naver.com'
+    , 'M'  --그룹원
+    , sysdate
+    , sysdate
+);
+
+insert into single_group_member
+values(
+    4
+    , 'calubang2@naver.com'
+    , 'M'  -- 그룹원
+    , sysdate
+    , sysdate
+);
+
+
+
+-- 해시태그 테스트 데이터
+insert into single_hashtag
+(hashtag_num, hashtag_content, hashtag_type_num, group_num)
+values( hashtag_num_seq.nextval, '스터디', 2, 1 );
+-- 해시태그 테스트 데이터
+insert into single_hashtag
+(hashtag_num, hashtag_content, hashtag_type_num, group_num)
+values( hashtag_num_seq.nextval, '영어단어', 2, 1 );
+-- 해시태그 테스트 데이터
+insert into single_hashtag
+(hashtag_num, hashtag_content, hashtag_type_num, group_num)
+values( hashtag_num_seq.nextval, '영어단어 외우기', 2, 1 );
+
+
+-- 해시태그 테스트 데이터
+insert into single_hashtag
+(hashtag_num, hashtag_content, hashtag_type_num, group_num)
+values( hashtag_num_seq.nextval, '취미', 2, 2 );
+-- 해시태그 테스트 데이터
+insert into single_hashtag
+(hashtag_num, hashtag_content, hashtag_type_num, group_num)
+values( hashtag_num_seq.nextval, '요리', 2, 2 );
+-- 해시태그 테스트 데이터
+insert into single_hashtag
+(hashtag_num, hashtag_content, hashtag_type_num, group_num)
+values( hashtag_num_seq.nextval, '과자만들기', 2, 2 );
+
+
+-- 해시태그 테스트 데이터
+insert into single_hashtag
+(hashtag_num, hashtag_content, hashtag_type_num, group_num)
+values( hashtag_num_seq.nextval, '나혼자산다', 2, 3 );
+-- 해시태그 테스트 데이터
+insert into single_hashtag
+(hashtag_num, hashtag_content, hashtag_type_num, group_num)
+values( hashtag_num_seq.nextval, '자취러', 2, 3 );
+-- 해시태그 테스트 데이터
+insert into single_hashtag
+(hashtag_num, hashtag_content, hashtag_type_num, group_num)
+values( hashtag_num_seq.nextval, '깔깔거리', 2, 3 );
+
+
+-- 해시태그 테스트 데이터
+insert into single_hashtag
+(hashtag_num, hashtag_content, hashtag_type_num, group_num)
+values( hashtag_num_seq.nextval, '떡볶이', 2, 4 );
+-- 해시태그 테스트 데이터
+insert into single_hashtag
+(hashtag_num, hashtag_content, hashtag_type_num, group_num)
+values( hashtag_num_seq.nextval, '서울떡볶이', 2, 4 );
+-- 해시태그 테스트 데이터
+insert into single_hashtag
+(hashtag_num, hashtag_content, hashtag_type_num, group_num)
+values( hashtag_num_seq.nextval, '떡튀순', 2, 4 );
+
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+-- 과제 1번 그룹에 넣어둠
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목'
+    , '과제내용'
+    , to_date('20190705', 'yyyymmdd')
+    , to_date('20190707', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목2'
+    , '과제내용2'
+    , to_date('20190706', 'yyyymmdd')
+    , to_date('20190708', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목3'
+    , '과제내용3'
+    , to_date('20190707', 'yyyymmdd')
+    , to_date('20190710', 'yyyymmdd')
+    , 1
+);
+insert into single_homework
+(homework_num, group_num, homework_subject, homework_content, homework_startdate, homework_enddate, homework_statecode)
+values(
+    homework_num_seq.nextval
+    , 1
+    , '과제제목4'
+    , '과제내용4'
+    , to_date('20190709', 'yyyymmdd')
+    , to_date('20190712', 'yyyymmdd')
+    , 1
+);
+insert into single_hprogress(
+homework_num, user_id, group_num, hprogress_success)
+values(
+    4, 'calubang2@naver.com', 1, 'S'
+);
+
+commit;
+
+		

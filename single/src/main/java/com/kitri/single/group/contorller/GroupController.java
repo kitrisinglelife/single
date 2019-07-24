@@ -391,18 +391,59 @@ public class GroupController {
 	}
 	
 	//추천용 테스트 jsp
+	/*
+	 * @RequestMapping(value = "/grouprecommend", method = RequestMethod.GET) public
+	 * String groupRecommend(HttpSession session) {
+	 * 
+	 * String path = "group/grouprecommend";
+	 * 
+	 * UserDto userInfo = (UserDto)session.getAttribute("userInfo"); if(userInfo ==
+	 * null) { path = "group"; }
+	 * 
+	 * return path; }
+	 */
+	
+	//추천 알고리즘
 	@RequestMapping(value = "/grouprecommend", method = RequestMethod.GET)
-	public String groupRecommend(HttpSession session) {
+	public String grouprecommend(Model model, HttpSession session) {
+		UserDto userDto = (UserDto) session.getAttribute("userInfo");
+//		UserDto userDto= new UserDto();
+//		userDto.setUserId("hth0893@naver.com");
 		
-		String path = "group/grouprecommend";
+
+	
 		
-		UserDto userInfo = (UserDto)session.getAttribute("userInfo");
-		if(userInfo == null) {
-			path = "group";
+		Map<String, Object> parameter = new HashMap<String, Object>();
+		System.out.println();
+//		parameter.put("page", "1");
+		if(userDto != null) {
+			parameter.put("userDto", userDto);
+		}else {
+			parameter.put("userDto", "");
 		}
+		model.addAttribute("parameter", parameter);
+//		parameter.put("key", "");
+//		parameter.put("word", "");
+//		parameter.put("isMyGroup", "");
+//		parameter.put("groupCategoryNum", "0");
 		
-		return path;
+		//System.out.println(parameter);
+		Map<String, Object> recommendParamMap = new HashMap<String, Object>();
+		recommendParamMap.put("page", "1");
+		recommendParamMap .put("userDto",userDto);
+		List<GroupDto> groupList = groupService.getRecommendGroupList(recommendParamMap);
+		//System.out.println("size : " + size);
+		//관련해시태그를 찾지 못하였습니다. -> 추천수 가 많은 순서대로 return ;
+
+		
+
+//		model.addAttribute("size", size);
+		model.addAttribute("parameter", parameter);
+		model.addAttribute("groupList", groupList);
+		//return "group2/grouplistresult2";
+		return "group/recommendresult";
 	}
+	
 	
 	
 	//그룹 내 nav바 이동 관련

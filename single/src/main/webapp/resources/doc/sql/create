@@ -1,0 +1,938 @@
+-- 모임
+ALTER TABLE single_group
+	DROP CONSTRAINT FK_group_category_TO_group; -- 모임카테고리 -> 모임
+
+-- 모임구성원
+ALTER TABLE single_group_member
+	DROP CONSTRAINT FK_group_TO_group_member; -- 모임 -> 모임구성원
+
+-- 모임구성원
+ALTER TABLE single_group_member
+	DROP CONSTRAINT FK_user_TO_group_member; -- 유저 -> 모임구성원
+
+-- 모임과제
+ALTER TABLE single_homework
+	DROP CONSTRAINT FK_group_TO_homework; -- 모임 -> 모임과제
+
+-- 모임채팅
+ALTER TABLE single_chat
+	DROP CONSTRAINT FK_group_member_TO_chat; -- 모임구성원 -> 모임채팅
+
+-- 모임과제진행
+ALTER TABLE single_hprogress
+	DROP CONSTRAINT FK_group_member_TO_hprogress; -- 모임구성원 -> 모임과제진행
+
+-- 모임과제진행
+ALTER TABLE single_hprogress
+	DROP CONSTRAINT FK_homework_TO_hprogress; -- 모임과제 -> 모임과제진행
+
+-- 게시판
+ALTER TABLE single_board
+	DROP CONSTRAINT FK_single_list_TO_board; -- 게시판리스트 -> 게시판
+
+-- 게시판
+ALTER TABLE single_board
+	DROP CONSTRAINT FK_user_TO_board; -- 유저 -> 게시판
+
+-- 좋아요
+ALTER TABLE single_like
+	DROP CONSTRAINT FK_single_board_TO_single_like; -- 게시판 -> 좋아요
+
+-- 좋아요
+ALTER TABLE single_like
+	DROP CONSTRAINT FK_user_TO_like; -- 유저 -> 좋아요
+
+-- 댓글
+ALTER TABLE single_reply
+	DROP CONSTRAINT FK_board_TO_reply; -- 게시판 -> 댓글
+
+-- 댓글
+ALTER TABLE single_reply
+	DROP CONSTRAINT FK_user_TO_reply; -- 유저 -> 댓글
+
+-- 모임일정
+ALTER TABLE single_calendar
+	DROP CONSTRAINT FK_group_TO_calendar; -- 모임 -> 모임일정
+
+-- 해시태그
+ALTER TABLE single_hashtag
+	DROP CONSTRAINT FK_hashtag_type_TO_hashtag; -- 해시태그타입 -> 해시태그
+
+-- 해시태그
+ALTER TABLE single_hashtag
+	DROP CONSTRAINT FK_board_TO_hashtag; -- 게시판 -> 해시태그
+
+-- 해시태그
+ALTER TABLE single_hashtag
+	DROP CONSTRAINT FK_group_TO_hashtag; -- 모임 -> 해시태그
+
+-- 게시판리스트
+ALTER TABLE single_board_list
+	DROP CONSTRAINT FK_board_type_TO_board_list; -- 게시판형식 -> 게시판리스트
+
+-- 게시판리스트
+ALTER TABLE single_board_list
+	DROP CONSTRAINT FK_bcate_TO_blist; -- 게시판카테고리 -> 게시판리스트
+
+-- 찜한모임
+ALTER TABLE single_stamp
+	DROP CONSTRAINT FK_group_TO_stamp; -- 모임 -> 찜한모임
+
+-- 찜한모임
+ALTER TABLE single_stamp
+	DROP CONSTRAINT FK_user_TO_stamp; -- 유저 -> 찜한모임
+
+-- 소셜로그인
+ALTER TABLE sns_login
+	DROP CONSTRAINT FK_single_user_TO_sns_login; -- 유저 -> 소셜로그인
+
+-- 모임
+ALTER TABLE single_group
+	DROP CONSTRAINT PK_single_group; -- 모임 기본키
+
+-- 모임카테고리
+ALTER TABLE single_group_category
+	DROP CONSTRAINT PK_single_group_category; -- 모임카테고리 기본키
+
+-- 모임구성원
+ALTER TABLE single_group_member
+	DROP CONSTRAINT PK_single_group_member; -- 모임구성원 기본키
+
+-- 모임과제
+ALTER TABLE single_homework
+	DROP CONSTRAINT PK_single_homework; -- 모임과제 기본키
+
+-- 모임채팅
+ALTER TABLE single_chat
+	DROP CONSTRAINT PK_single_chat; -- 모임채팅 기본키
+
+-- 모임과제진행
+ALTER TABLE single_hprogress
+	DROP CONSTRAINT PK_single_hprogress; -- 모임과제진행 기본키
+
+-- 유저
+ALTER TABLE single_user
+	DROP CONSTRAINT PK_single_user; -- 유저 기본키
+
+-- 게시판
+ALTER TABLE single_board
+	DROP CONSTRAINT PK_single_board; -- 게시판 기본키
+
+-- 게시판카테고리
+ALTER TABLE single_board_category
+	DROP CONSTRAINT PK_single_board_category; -- 게시판카테고리 기본키
+
+-- 좋아요
+ALTER TABLE single_like
+	DROP CONSTRAINT PK_single_like; -- 좋아요 기본키
+
+-- 댓글
+ALTER TABLE single_reply
+	DROP CONSTRAINT PK_single_reply; -- 댓글 기본키
+
+-- 모임일정
+ALTER TABLE single_calendar
+	DROP CONSTRAINT PK_single_calendar; -- 모임일정 기본키
+
+-- 해시태그
+ALTER TABLE single_hashtag
+	DROP CONSTRAINT PK_single_hashtag; -- 해시태그 기본키
+
+-- 해시태그타입
+ALTER TABLE single_hashtag_type
+	DROP CONSTRAINT PK_single_hashtag_type; -- 해시태그타입 기본키
+
+-- 게시판리스트
+ALTER TABLE single_board_list
+	DROP CONSTRAINT PK_single_board_list; -- 게시판리스트 기본키
+
+-- 게시판형식
+ALTER TABLE single_board_type
+	DROP CONSTRAINT PK_single_board_type; -- 게시판형식 기본키
+
+-- 검색로그
+ALTER TABLE single_search_log
+	DROP CONSTRAINT PK_single_search_log; -- 검색로그 기본키
+
+-- 찜한모임
+ALTER TABLE single_stamp
+	DROP CONSTRAINT PK_single_stamp; -- 찜한모임 기본키
+
+-- 소셜로그인
+ALTER TABLE sns_login
+	DROP CONSTRAINT PK_sns_login; -- 소셜로그인 기본키
+
+-- 모임
+DROP TABLE single_group;
+
+-- 모임카테고리
+DROP TABLE single_group_category;
+
+-- 모임구성원
+DROP TABLE single_group_member;
+
+-- 모임과제
+DROP TABLE single_homework;
+
+-- 모임채팅
+DROP TABLE single_chat;
+
+-- 모임과제진행
+DROP TABLE single_hprogress;
+
+-- 유저
+DROP TABLE single_user;
+
+-- 게시판
+DROP TABLE single_board;
+
+-- 게시판카테고리
+DROP TABLE single_board_category;
+
+-- 좋아요
+DROP TABLE single_like;
+
+-- 댓글
+DROP TABLE single_reply;
+
+-- 모임일정
+DROP TABLE single_calendar;
+
+-- 해시태그
+DROP TABLE single_hashtag;
+
+-- 해시태그타입
+DROP TABLE single_hashtag_type;
+
+-- 게시판리스트
+DROP TABLE single_board_list;
+
+-- 게시판형식
+DROP TABLE single_board_type;
+
+-- 검색로그
+DROP TABLE single_search_log;
+
+-- 찜한모임
+DROP TABLE single_stamp;
+
+-- 소셜로그인
+DROP TABLE sns_login;
+
+-- 모임
+CREATE TABLE single_group (
+	group_num          number         NOT NULL, -- 모임번호
+	group_category_num number         NULL,     -- 모임카테고리번호
+	group_name         varchar2(128)  NULL,     -- 모임이름
+	group_description  varchar2(1024) NULL,     -- 모임설명
+	group_img_src      varchar2(256)  NULL,     -- 모임대표이미지주소
+	group_member_count number         NULL,     -- 현재모임내인원
+	group_member_limit number         NULL,     -- 모임인원제한
+	group_main_place   varchar2(128)  NULL,     -- 주요모임장소
+	group_createdate   DATE           NULL,     -- 모임생성일
+	group_deletedate   DATE           NULL,     -- 모임삭제일
+	group_statecode    varchar2(1)    NULL      -- 모임상태코드
+);
+
+-- 모임 기본키
+CREATE UNIQUE INDEX PK_single_group
+	ON single_group ( -- 모임
+		group_num ASC -- 모임번호
+	);
+
+-- 모임
+ALTER TABLE single_group
+	ADD
+		CONSTRAINT PK_single_group -- 모임 기본키
+		PRIMARY KEY (
+			group_num -- 모임번호
+		);
+
+-- 모임카테고리
+CREATE TABLE single_group_category (
+	group_category_num  number        NOT NULL, -- 모임카테고리번호
+	group_category_name varchar2(128) NULL      -- 모임카테고리이름
+);
+
+-- 모임카테고리 기본키
+CREATE UNIQUE INDEX PK_single_group_category
+	ON single_group_category ( -- 모임카테고리
+		group_category_num ASC -- 모임카테고리번호
+	);
+
+-- 모임카테고리
+ALTER TABLE single_group_category
+	ADD
+		CONSTRAINT PK_single_group_category -- 모임카테고리 기본키
+		PRIMARY KEY (
+			group_category_num -- 모임카테고리번호
+		);
+
+-- 모임구성원
+CREATE TABLE single_group_member (
+	group_num              number       NOT NULL, -- 모임번호
+	user_id                varchar2(64) NOT NULL, -- 유저아이디
+	group_member_statecode varchar2(1)  NULL,     -- 구성원분류상태
+	group_joindate         DATE         NULL,     -- 모임가입일
+	group_requestdate      DATE         NULL      -- 모임요청일
+);
+
+-- 모임구성원 기본키
+CREATE UNIQUE INDEX PK_single_group_member
+	ON single_group_member ( -- 모임구성원
+		group_num ASC, -- 모임번호
+		user_id   ASC  -- 유저아이디
+	);
+
+-- 모임구성원
+ALTER TABLE single_group_member
+	ADD
+		CONSTRAINT PK_single_group_member -- 모임구성원 기본키
+		PRIMARY KEY (
+			group_num, -- 모임번호
+			user_id    -- 유저아이디
+		);
+
+-- 모임과제
+CREATE TABLE single_homework (
+	homework_num       number         NOT NULL, -- 모임과제번호
+	group_num          number         NULL,     -- 모임번호
+	homework_subject   varchar2(256)  NULL,     -- 과제제목
+	homework_content   varchar2(4000) NULL,     -- 과제내용
+	homework_startdate DATE           NULL,     -- 과제시작일
+	homework_enddate   DATE           NULL,     -- 과제종료일
+	homework_statecode varchar2(1)    NULL      -- 모임과제상태코드
+);
+
+-- 모임과제 기본키
+CREATE UNIQUE INDEX PK_single_homework
+	ON single_homework ( -- 모임과제
+		homework_num ASC -- 모임과제번호
+	);
+
+-- 모임과제
+ALTER TABLE single_homework
+	ADD
+		CONSTRAINT PK_single_homework -- 모임과제 기본키
+		PRIMARY KEY (
+			homework_num -- 모임과제번호
+		);
+
+-- 모임채팅
+CREATE TABLE single_chat (
+	group_num    number         NOT NULL, -- 모임번호
+	user_id      varchar2(64)   NOT NULL, -- 유저아이디
+	chat_time    TIMESTAMP      NOT NULL, -- 채팅날짜
+	chat_content varchar2(1024) NULL      -- 채팅내용
+);
+
+-- 모임채팅 기본키
+CREATE UNIQUE INDEX PK_single_chat
+	ON single_chat ( -- 모임채팅
+		group_num ASC, -- 모임번호
+		user_id   ASC, -- 유저아이디
+		chat_time ASC  -- 채팅날짜
+	);
+
+-- 모임채팅
+ALTER TABLE single_chat
+	ADD
+		CONSTRAINT PK_single_chat -- 모임채팅 기본키
+		PRIMARY KEY (
+			group_num, -- 모임번호
+			user_id,   -- 유저아이디
+			chat_time  -- 채팅날짜
+		);
+
+-- 모임과제진행
+CREATE TABLE single_hprogress (
+	homework_num          number         NOT NULL, -- 모임과제번호
+	user_id               varchar2(64)   NOT NULL, -- 유저아이디
+	group_num             number         NOT NULL, -- 모임번호
+	hprogress_subject     varchar2(256)  NULL,     -- 과제진행제목
+	hprogress_content     varchar2(4000) NULL,     -- 과제진행내용
+	hprogress_success     varchar2(1)    NULL,     -- 과제성공여부
+	hprogress_file        varchar2(256)  NULL,     -- 파일경로
+	hprogress_file_origin varchar2(256)  NULL,     -- 파일원본이름
+	hprogress_createdate  DATE           NULL,     -- 등록일
+	hprogress_updatedate  DATE           NULL      -- 수정일
+);
+
+-- 모임과제진행 기본키
+CREATE UNIQUE INDEX PK_single_hprogress
+	ON single_hprogress ( -- 모임과제진행
+		homework_num ASC, -- 모임과제번호
+		user_id      ASC  -- 유저아이디
+	);
+
+-- 모임과제진행
+ALTER TABLE single_hprogress
+	ADD
+		CONSTRAINT PK_single_hprogress -- 모임과제진행 기본키
+		PRIMARY KEY (
+			homework_num, -- 모임과제번호
+			user_id       -- 유저아이디
+		);
+
+-- 유저
+CREATE TABLE single_user (
+	user_id            varchar2(64)  NOT NULL, -- 유저아이디
+	user_password      varchar2(32)  NULL,     -- 패스워드
+	user_nickname      varchar2(32)  NULL,     -- 닉네임
+	user_name          varchar2(32)  NULL,     -- 이름
+	user_profile       varchar2(256) NULL,     -- 유저 프로필
+	user_birthday      DATE          NULL,     -- 생일
+	user_gender        varchar2(1)   NULL,     -- 성별
+	user_phone         varchar2(16)  NULL,     -- 핸드폰번호
+	user_zipcode       varchar2(8)   NULL,     -- 우편번호
+	user_address       varchar2(128) NULL,     -- 주소
+	user_addressdetail varchar2(128) NULL,     -- 주소상세
+	user_joindate      DATE          NULL,     -- 가입일
+	user_outdate       DATE          NULL,     -- 탈퇴일
+	user_statecode     varchar2(1)   NULL,     -- 유저상태코드
+	auth_state         VARCHAR2(1)   NULL,     -- 인증상태
+	auth_key           VARCHAR2(128) NULL      -- 인증키
+);
+
+-- 유저 기본키
+CREATE UNIQUE INDEX PK_single_user
+	ON single_user ( -- 유저
+		user_id ASC -- 유저아이디
+	);
+
+-- 유저
+ALTER TABLE single_user
+	ADD
+		CONSTRAINT PK_single_user -- 유저 기본키
+		PRIMARY KEY (
+			user_id -- 유저아이디
+		);
+
+-- 게시판
+CREATE TABLE single_board (
+	board_num        number        NOT NULL, -- 글번호
+	board_list_num   number        NULL,     -- 게시판번호
+	user_id          varchar2(64)  NULL,     -- 유저아이디
+	user_nickname    varchar2(32)  NULL,     -- 유저닉네임
+	board_subject    varchar2(256) NULL,     -- 게시판제목
+	board_content    CLOB          NULL,     -- 게시판내용
+	board_views      number        NULL,     -- 조회수
+	board_like       number        NULL,     -- 좋아요수
+	board_createdate DATE          NULL,     -- 작성일
+	board_updatedate DATE          NULL,     -- 최근변경일
+	board_deletedate DATE          NULL,     -- 삭제일
+	board_statecode  varchar2(1)   NULL      -- 글상태코드
+);
+
+-- 게시판 기본키
+CREATE UNIQUE INDEX PK_single_board
+	ON single_board ( -- 게시판
+		board_num ASC -- 글번호
+	);
+
+-- 게시판
+ALTER TABLE single_board
+	ADD
+		CONSTRAINT PK_single_board -- 게시판 기본키
+		PRIMARY KEY (
+			board_num -- 글번호
+		);
+
+-- 게시판카테고리
+CREATE TABLE single_board_category (
+	category_num  number        NOT NULL, -- 게시판카테고리번호
+	category_name varchar2(128) NULL      -- 카테고리이름
+);
+
+-- 게시판카테고리 기본키
+CREATE UNIQUE INDEX PK_single_board_category
+	ON single_board_category ( -- 게시판카테고리
+		category_num ASC -- 게시판카테고리번호
+	);
+
+-- 게시판카테고리
+ALTER TABLE single_board_category
+	ADD
+		CONSTRAINT PK_single_board_category -- 게시판카테고리 기본키
+		PRIMARY KEY (
+			category_num -- 게시판카테고리번호
+		);
+
+-- 좋아요
+CREATE TABLE single_like (
+	board_num number       NOT NULL, -- 글번호
+	user_id   varchar2(64) NOT NULL  -- 유저아이디
+);
+
+-- 좋아요 기본키
+CREATE UNIQUE INDEX PK_single_like
+	ON single_like ( -- 좋아요
+		board_num ASC, -- 글번호
+		user_id   ASC  -- 유저아이디
+	);
+
+-- 좋아요
+ALTER TABLE single_like
+	ADD
+		CONSTRAINT PK_single_like -- 좋아요 기본키
+		PRIMARY KEY (
+			board_num, -- 글번호
+			user_id    -- 유저아이디
+		);
+
+-- 댓글
+CREATE TABLE single_reply (
+	reply_num        number         NOT NULL, -- 댓글번호
+	board_num        number         NULL,     -- 글번호
+	user_id          varchar2(64)   NULL,     -- 유저아이디
+	user_nickname    varchar2(32)   NULL,     -- 유저닉네임
+	reply_content    varchar2(1024) NULL,     -- 댓글내용
+	reply_createdate DATE           NULL      -- 작성일
+);
+
+-- 댓글 기본키
+CREATE UNIQUE INDEX PK_single_reply
+	ON single_reply ( -- 댓글
+		reply_num ASC -- 댓글번호
+	);
+
+-- 댓글
+ALTER TABLE single_reply
+	ADD
+		CONSTRAINT PK_single_reply -- 댓글 기본키
+		PRIMARY KEY (
+			reply_num -- 댓글번호
+		);
+
+-- 모임일정
+CREATE TABLE single_calendar (
+	calendar_num     number         NOT NULL, -- 모임일정번호
+	group_num        number         NULL,     -- 모임번호
+	calendar_subject varchar2(256)  NULL,     -- 모임일정제목
+	calendar_content varchar2(4000) NULL,     -- 모임일정내용
+	calendar_date    DATE           NULL,     -- 일정날짜
+	calendar_x_loc   float          NULL,     -- 일정장소X좌표
+	calendar_y_loc   float          NULL      -- 일정장소Y좌표
+);
+
+-- 모임일정 기본키
+CREATE UNIQUE INDEX PK_single_calendar
+	ON single_calendar ( -- 모임일정
+		calendar_num ASC -- 모임일정번호
+	);
+
+-- 모임일정
+ALTER TABLE single_calendar
+	ADD
+		CONSTRAINT PK_single_calendar -- 모임일정 기본키
+		PRIMARY KEY (
+			calendar_num -- 모임일정번호
+		);
+
+-- 해시태그
+CREATE TABLE single_hashtag (
+	hashtag_num      number        NOT NULL, -- 해시태그번호
+	hashtag_content  varchar2(256) NULL,     -- 해시태그내용
+	hashtag_type_num number        NULL,     -- 해시태그타입번호
+	board_num        number        NULL,     -- 글번호
+	group_num        number        NULL      -- 모임번호
+);
+
+-- 해시태그 기본키
+CREATE UNIQUE INDEX PK_single_hashtag
+	ON single_hashtag ( -- 해시태그
+		hashtag_num ASC -- 해시태그번호
+	);
+
+-- 해시태그
+ALTER TABLE single_hashtag
+	ADD
+		CONSTRAINT PK_single_hashtag -- 해시태그 기본키
+		PRIMARY KEY (
+			hashtag_num -- 해시태그번호
+		);
+
+-- 해시태그타입
+CREATE TABLE single_hashtag_type (
+	hashtag_type_num  number        NOT NULL, -- 해시태그타입번호
+	hasgtag_type_name varchar2(128) NULL      -- 해시태그타입이름
+);
+
+-- 해시태그타입 기본키
+CREATE UNIQUE INDEX PK_single_hashtag_type
+	ON single_hashtag_type ( -- 해시태그타입
+		hashtag_type_num ASC -- 해시태그타입번호
+	);
+
+-- 해시태그타입
+ALTER TABLE single_hashtag_type
+	ADD
+		CONSTRAINT PK_single_hashtag_type -- 해시태그타입 기본키
+		PRIMARY KEY (
+			hashtag_type_num -- 해시태그타입번호
+		);
+
+-- 게시판리스트
+CREATE TABLE single_board_list (
+	board_list_num     number        NOT NULL, -- 게시판번호
+	board_name         varchar2(128) NULL,     -- 게시판이름
+	board_type_num     number        NULL,     -- 게시판형식번호
+	board_category_num number        NULL      -- 게시판카테고리번호
+);
+
+-- 게시판리스트 기본키
+CREATE UNIQUE INDEX PK_single_board_list
+	ON single_board_list ( -- 게시판리스트
+		board_list_num ASC -- 게시판번호
+	);
+
+-- 게시판리스트
+ALTER TABLE single_board_list
+	ADD
+		CONSTRAINT PK_single_board_list -- 게시판리스트 기본키
+		PRIMARY KEY (
+			board_list_num -- 게시판번호
+		);
+
+-- 게시판형식
+CREATE TABLE single_board_type (
+	board_type_num  number        NOT NULL, -- 게시판형식번호
+	board_type_name varchar2(128) NULL      -- 게시판형식이름
+);
+
+-- 게시판형식 기본키
+CREATE UNIQUE INDEX PK_single_board_type
+	ON single_board_type ( -- 게시판형식
+		board_type_num ASC -- 게시판형식번호
+	);
+
+-- 게시판형식
+ALTER TABLE single_board_type
+	ADD
+		CONSTRAINT PK_single_board_type -- 게시판형식 기본키
+		PRIMARY KEY (
+			board_type_num -- 게시판형식번호
+		);
+
+-- 검색로그
+CREATE TABLE single_search_log (
+	search_log_num number         NOT NULL, -- 검색로그번호
+	user_id        varchar2(64)   NULL,     -- 유저아이디
+	search_content varchar2(1024) NULL,     -- 검색내용
+	search_date    DATE           NULL,     -- 검색일
+	search_site    varchar2(256)  NULL      -- 검색사이트
+);
+
+-- 검색로그 기본키
+CREATE UNIQUE INDEX PK_single_search_log
+	ON single_search_log ( -- 검색로그
+		search_log_num ASC -- 검색로그번호
+	);
+
+-- 검색로그
+ALTER TABLE single_search_log
+	ADD
+		CONSTRAINT PK_single_search_log -- 검색로그 기본키
+		PRIMARY KEY (
+			search_log_num -- 검색로그번호
+		);
+
+-- 찜한모임
+CREATE TABLE single_stamp (
+	user_id   varchar2(64) NOT NULL, -- 유저아이디
+	group_num number       NOT NULL  -- 모임번호
+);
+
+-- 찜한모임 기본키
+CREATE UNIQUE INDEX PK_single_stamp
+	ON single_stamp ( -- 찜한모임
+		user_id   ASC, -- 유저아이디
+		group_num ASC  -- 모임번호
+	);
+
+-- 찜한모임
+ALTER TABLE single_stamp
+	ADD
+		CONSTRAINT PK_single_stamp -- 찜한모임 기본키
+		PRIMARY KEY (
+			user_id,   -- 유저아이디
+			group_num  -- 모임번호
+		);
+
+-- 소셜로그인
+CREATE TABLE sns_login (
+	sns_type         VARCHAR(32)   NOT NULL, -- 소셜타입
+	sns_connect_date VARCHAR2(45)  NULL,     -- 소셜접속일
+	user_id          varchar2(64)  NOT NULL, -- 유저아이디
+	sns_id           VARCHAR2(45)  NOT NULL, -- 소셜아이디
+	sns_token        VARCHAR2(128) NOT NULL, -- 갱신토큰
+	sns_email        VARCHAR2(45)  NULL,     -- 소셜이메일
+	sns_nickname     VARCHAR2(45)  NULL,     -- 소셜닉네임
+	sns_profile      VARCHAR2(45)  NULL,     -- 소셜이미지
+	sns_age          VARCHAR2(45)  NULL,     -- 소셜나이
+	sns_birthday     VARCHAR2(45)  NULL,     -- 소셜생일
+	sns_name         VARCHAR2(45)  NULL,     -- 소셜이름
+	sns_gender       VARCHAR2(45)  NULL      -- 소셜성별
+);
+
+-- 소셜로그인 기본키
+CREATE UNIQUE INDEX PK_sns_login
+	ON sns_login ( -- 소셜로그인
+		sns_type ASC, -- 소셜타입
+		sns_id   ASC  -- 소셜아이디
+	);
+
+-- 소셜로그인
+ALTER TABLE sns_login
+	ADD
+		CONSTRAINT PK_sns_login -- 소셜로그인 기본키
+		PRIMARY KEY (
+			sns_type, -- 소셜타입
+			sns_id    -- 소셜아이디
+		);
+
+-- 모임
+ALTER TABLE single_group
+	ADD
+		CONSTRAINT FK_group_category_TO_group -- 모임카테고리 -> 모임
+		FOREIGN KEY (
+			group_category_num -- 모임카테고리번호
+		)
+		REFERENCES single_group_category ( -- 모임카테고리
+			group_category_num -- 모임카테고리번호
+		);
+
+-- 모임구성원
+ALTER TABLE single_group_member
+	ADD
+		CONSTRAINT FK_group_TO_group_member -- 모임 -> 모임구성원
+		FOREIGN KEY (
+			group_num -- 모임번호
+		)
+		REFERENCES single_group ( -- 모임
+			group_num -- 모임번호
+		);
+
+-- 모임구성원
+ALTER TABLE single_group_member
+	ADD
+		CONSTRAINT FK_user_TO_group_member -- 유저 -> 모임구성원
+		FOREIGN KEY (
+			user_id -- 유저아이디
+		)
+		REFERENCES single_user ( -- 유저
+			user_id -- 유저아이디
+		);
+
+-- 모임과제
+ALTER TABLE single_homework
+	ADD
+		CONSTRAINT FK_group_TO_homework -- 모임 -> 모임과제
+		FOREIGN KEY (
+			group_num -- 모임번호
+		)
+		REFERENCES single_group ( -- 모임
+			group_num -- 모임번호
+		);
+
+-- 모임채팅
+ALTER TABLE single_chat
+	ADD
+		CONSTRAINT FK_group_member_TO_chat -- 모임구성원 -> 모임채팅
+		FOREIGN KEY (
+			group_num, -- 모임번호
+			user_id    -- 유저아이디
+		)
+		REFERENCES single_group_member ( -- 모임구성원
+			group_num, -- 모임번호
+			user_id    -- 유저아이디
+		);
+
+-- 모임과제진행
+ALTER TABLE single_hprogress
+	ADD
+		CONSTRAINT FK_group_member_TO_hprogress -- 모임구성원 -> 모임과제진행
+		FOREIGN KEY (
+			group_num, -- 모임번호
+			user_id    -- 유저아이디
+		)
+		REFERENCES single_group_member ( -- 모임구성원
+			group_num, -- 모임번호
+			user_id    -- 유저아이디
+		);
+
+-- 모임과제진행
+ALTER TABLE single_hprogress
+	ADD
+		CONSTRAINT FK_homework_TO_hprogress -- 모임과제 -> 모임과제진행
+		FOREIGN KEY (
+			homework_num -- 모임과제번호
+		)
+		REFERENCES single_homework ( -- 모임과제
+			homework_num -- 모임과제번호
+		);
+
+-- 게시판
+ALTER TABLE single_board
+	ADD
+		CONSTRAINT FK_single_list_TO_board -- 게시판리스트 -> 게시판
+		FOREIGN KEY (
+			board_list_num -- 게시판번호
+		)
+		REFERENCES single_board_list ( -- 게시판리스트
+			board_list_num -- 게시판번호
+		);
+
+-- 게시판
+ALTER TABLE single_board
+	ADD
+		CONSTRAINT FK_user_TO_board -- 유저 -> 게시판
+		FOREIGN KEY (
+			user_id -- 유저아이디
+		)
+		REFERENCES single_user ( -- 유저
+			user_id -- 유저아이디
+		);
+
+-- 좋아요
+ALTER TABLE single_like
+	ADD
+		CONSTRAINT FK_single_board_TO_single_like -- 게시판 -> 좋아요
+		FOREIGN KEY (
+			board_num -- 글번호
+		)
+		REFERENCES single_board ( -- 게시판
+			board_num -- 글번호
+		);
+
+-- 좋아요
+ALTER TABLE single_like
+	ADD
+		CONSTRAINT FK_user_TO_like -- 유저 -> 좋아요
+		FOREIGN KEY (
+			user_id -- 유저아이디
+		)
+		REFERENCES single_user ( -- 유저
+			user_id -- 유저아이디
+		);
+
+-- 댓글
+ALTER TABLE single_reply
+	ADD
+		CONSTRAINT FK_board_TO_reply -- 게시판 -> 댓글
+		FOREIGN KEY (
+			board_num -- 글번호
+		)
+		REFERENCES single_board ( -- 게시판
+			board_num -- 글번호
+		);
+
+-- 댓글
+ALTER TABLE single_reply
+	ADD
+		CONSTRAINT FK_user_TO_reply -- 유저 -> 댓글
+		FOREIGN KEY (
+			user_id -- 유저아이디
+		)
+		REFERENCES single_user ( -- 유저
+			user_id -- 유저아이디
+		);
+
+-- 모임일정
+ALTER TABLE single_calendar
+	ADD
+		CONSTRAINT FK_group_TO_calendar -- 모임 -> 모임일정
+		FOREIGN KEY (
+			group_num -- 모임번호
+		)
+		REFERENCES single_group ( -- 모임
+			group_num -- 모임번호
+		);
+
+-- 해시태그
+ALTER TABLE single_hashtag
+	ADD
+		CONSTRAINT FK_hashtag_type_TO_hashtag -- 해시태그타입 -> 해시태그
+		FOREIGN KEY (
+			hashtag_type_num -- 해시태그타입번호
+		)
+		REFERENCES single_hashtag_type ( -- 해시태그타입
+			hashtag_type_num -- 해시태그타입번호
+		);
+
+-- 해시태그
+ALTER TABLE single_hashtag
+	ADD
+		CONSTRAINT FK_board_TO_hashtag -- 게시판 -> 해시태그
+		FOREIGN KEY (
+			board_num -- 글번호
+		)
+		REFERENCES single_board ( -- 게시판
+			board_num -- 글번호
+		);
+
+-- 해시태그
+ALTER TABLE single_hashtag
+	ADD
+		CONSTRAINT FK_group_TO_hashtag -- 모임 -> 해시태그
+		FOREIGN KEY (
+			group_num -- 모임번호
+		)
+		REFERENCES single_group ( -- 모임
+			group_num -- 모임번호
+		);
+
+-- 게시판리스트
+ALTER TABLE single_board_list
+	ADD
+		CONSTRAINT FK_board_type_TO_board_list -- 게시판형식 -> 게시판리스트
+		FOREIGN KEY (
+			board_type_num -- 게시판형식번호
+		)
+		REFERENCES single_board_type ( -- 게시판형식
+			board_type_num -- 게시판형식번호
+		);
+
+-- 게시판리스트
+ALTER TABLE single_board_list
+	ADD
+		CONSTRAINT FK_bcate_TO_blist -- 게시판카테고리 -> 게시판리스트
+		FOREIGN KEY (
+			board_category_num -- 게시판카테고리번호
+		)
+		REFERENCES single_board_category ( -- 게시판카테고리
+			category_num -- 게시판카테고리번호
+		);
+
+-- 찜한모임
+ALTER TABLE single_stamp
+	ADD
+		CONSTRAINT FK_group_TO_stamp -- 모임 -> 찜한모임
+		FOREIGN KEY (
+			group_num -- 모임번호
+		)
+		REFERENCES single_group ( -- 모임
+			group_num -- 모임번호
+		);
+
+-- 찜한모임
+ALTER TABLE single_stamp
+	ADD
+		CONSTRAINT FK_user_TO_stamp -- 유저 -> 찜한모임
+		FOREIGN KEY (
+			user_id -- 유저아이디
+		)
+		REFERENCES single_user ( -- 유저
+			user_id -- 유저아이디
+		);
+
+-- 소셜로그인
+ALTER TABLE sns_login
+	ADD
+		CONSTRAINT FK_single_user_TO_sns_login -- 유저 -> 소셜로그인
+		FOREIGN KEY (
+			user_id -- 유저아이디
+		)
+		REFERENCES single_user ( -- 유저
+			user_id -- 유저아이디
+		);

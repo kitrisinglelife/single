@@ -96,7 +96,7 @@ $(function() {
 	$(".recomandBtn").on("click", function () {
 		$("#categoryFilter").val("0").siblings("button").text("카테고리");
 		$.ajax({
-			 url : "${root}/group2/grouplist2",
+			 url : "${root}/group/grouprecommend",
 			 method : "get",
 			 success : function(result) {
 				console.log(result);
