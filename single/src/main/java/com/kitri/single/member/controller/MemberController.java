@@ -158,7 +158,7 @@ public class MemberController {
 				&& !userDto.getUserPassword().equals(inputPass)
 				&& userDto.getUserStatecode().equals("1")) {
 			//비밀번호가 틀렸습니다.
-			model.addAttribute("userInfo", userDto);
+			model.addAttribute("userInfo", null);
 			return "{\"msg\":\"12\"}";
 		}else if(userDto != null
 				&&userDto.getUserStatecode().equals("0")) {
